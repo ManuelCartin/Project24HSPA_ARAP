@@ -3,34 +3,46 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.arap.controller;
-import org.springframework.core.io.ClassPathResource;
+
+import org.bson.Document;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 /**
  *
  * @author user
  */
 
+
+
 @RestController
 @RequestMapping("/api/v1/circuit")
+@CrossOrigin(origins = "*") // Permite peticiones desde el frontend web
 public class CircuitController {
+
+    @Autowired
+    private MongoTemplate mongoTemplate;
 
     @GetMapping(value = "/spa-geometry", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> getSpaGeometry() {
-        try {
-            ClassPathResource resource = new ClassPathResource("static/spa_francorchamps.geojson");
-            String geoJsonContent = Files.readString(Path.of(resource.getURI()));
-            return ResponseEntity.ok(geoJsonContent);
-        } catch (IOException e) {
-            return ResponseEntity.status(500).body("{\"error\": \"No se pudo cargar la geometría del circuito Spa\"}");
+        Query query = new Query(Criteria.where("name").is("Circuit of Spa-Francorchamps"));
+        Document circuit = mongoTemplate.findOne(query, Document.class, "CircuitGeometry");
+
+        if (circuit != null) {
+            // Remueve el _id de MongoDB si no deseas enviarlo al cliente GeoJSON estándar
+            circuit.remove("_id");
+            return ResponseEntity.ok(circuit.toJson());
         }
+
+        return ResponseEntity.status(404)
+                .body("{\"error\": \"No se encontró la geometría en la base de datos\"}");
     }
 }
