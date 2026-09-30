@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARAP - Decision Base | 24h Spa-Francorchamps</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Leaflet CSS & JS (WebGIS) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Chart.js para telemetría -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        #map { height: 100%; width: 100%; min-height: 380px; border-radius: 0.75rem; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen p-6">
+
+    <!-- Header / Navbar -->
+    <header class="flex justify-between items-center pb-6 mb-6 border-b border-slate-800">
+        <div>
+            <h1 class="text-2xl font-bold tracking-wider text-red-500 flex items-center gap-2">
+                <span>ARAP v1.0</span>
+                <span class="text-xs bg-red-950 text-red-400 border border-red-800 px-2 py-0.5 rounded-full font-mono">AUDI SPORT GT3</span>
+            </h1>
+            <p class="text-xs text-slate-400 mt-1">Análisis y Rendimiento Audi Prototype — 24 Hours of Spa Preparation Base</p>
+        </div>
+        <div class="flex items-center gap-4 text-xs font-mono">
+            <span class="bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-lg flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                MONGO_DB: CONNECTED
+            </span>
+            <span class="bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-lg text-slate-300">
+                LAYOUT: SPA-FRANCORCHAMPS (7.004 km)
+            </span>
+        </div>
+    </header>
+
+    <!-- Bento Grid Layout -->
+    <main class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        
+        <!-- Card 1: WebGIS Spa-Francorchamps (2 columnas / 2 filas) -->
+        <div class="md:col-span-2 lg:col-span-2 md:row-span-2 bg-slate-900 border border-slate-800 p-4 rounded-xl flex flex-col justify-between shadow-xl">
+            <div class="flex justify-between items-center mb-3">
+                <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-300 flex items-center gap-2">
+                    <svg class="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    Circuit Geometry & Sectors (WebGIS)
+                </h2>
+                <span class="text-xs text-slate-500 font-mono">GeoJSON Live Vector</span>
+            </div>
+            <div id="map" class="bg-slate-950 border border-slate-800"></div>
+        </div>
+
+        <!-- Card 2: Metrics KPI Overview -->
+        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl flex flex-col justify-between">
+            <span class="text-xs text-slate-400 font-medium uppercase">Best Lap (Stint 20 min)</span>
+            <div class="my-2">
+                <span id="kpi-best-lap" class="text-3xl font-mono font-bold text-red-400">2:17.482</span>
+                <span class="text-xs text-slate-500 block mt-1">S3 Optimal Pace</span>
+            </div>
+            <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-red-500 h-full w-[88%]"></div>
+            </div>
+        </div>
+
+        <!-- Card 3: Fuel Strategy & Consumption -->
+        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl flex flex-col justify-between">
+            <span class="text-xs text-slate-400 font-medium uppercase">Est. Fuel Burn / Lap</span>
+            <div class="my-2">
+                <span id="kpi-fuel-burn" class="text-3xl font-mono font-bold text-amber-400">3.42 L</span>
+                <span class="text-xs text-slate-500 block mt-1">Stint Max Target: 65.0 L</span>
+            </div>
+            <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-amber-500 h-full w-[62%]"></div>
+            </div>
+        </div>
+
+        <!-- Card 4: Telemetry Chart (Speed / RPM vs Time) -->
+        <div class="md:col-span-2 lg:col-span-2 bg-slate-900 border border-slate-800 p-4 rounded-xl">
+            <div class="flex justify-between items-center mb-3">
+                <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-300">Kinematic Telemetry Stream</h2>
+                <div class="flex gap-2">
+                    <button class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 px-2.5 py-1 rounded border border-slate-700 font-mono">Speed (km/h)</button>
+                    <button class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 px-2.5 py-1 rounded border border-slate-700 font-mono">RPM</button>
+                </div>
+            </div>
+            <div class="h-48">
+                <canvas id="telemetryChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Card 5: Radar Meteorology & Track Status -->
+        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl flex flex-col justify-between">
+            <div class="flex justify-between items-start">
+                <span class="text-xs text-slate-400 font-medium uppercase">Radar Track Temp</span>
+                <span class="text-xs bg-blue-950 text-blue-400 border border-blue-800 px-2 py-0.5 rounded font-mono">DAMP</span>
+            </div>
+            <div class="my-2">
+                <span class="text-3xl font-mono font-bold text-blue-300">21.4 °C</span>
+                <span class="text-xs text-slate-500 block mt-1">Ambient: 16.8 °C | Precip: 12%</span>
+            </div>
+            <span class="text-[11px] text-slate-400 italic">Eau Rouge Grip Index: 0.91 $\mu$</span>
+        </div>
+
+        <!-- Card 6: Decision Base Action Controls -->
+        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl flex flex-col justify-between">
+            <span class="text-xs text-slate-400 font-medium uppercase">Stint Control</span>
+            <div class="flex flex-col gap-2 my-2">
+                <button onclick="fetchTelemetryData()" class="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-3 rounded-lg text-xs uppercase tracking-wider transition-colors shadow-lg shadow-red-900/30">
+                    Fetch Stint Telemetry
+                </button>
+                <button onclick="loadGeoJsonTrack()" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold py-2 px-3 rounded-lg text-xs uppercase tracking-wider border border-slate-700 transition-colors">
+                    Reload Spa Geometry
+                </button>
+            </div>
+            <span class="text-[10px] text-slate-500 text-center font-mono">API: /api/v1/telemetry/gt3</span>
+        </div>
+
+    </main>
+
+    <!-- Script de Integración WebGIS + Chart.js -->
+    <script>
+        // Initialize WebGIS Map Centered in Spa-Francorchamps Circuit
+        const map = L.map('map').setView([50.4372, 5.9714], 14);
+
+        // Dark Map Tile Layer
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; OpenStreetMap &copy; CARTO',
+            maxZoom: 19
+        }).addTo(map);
+
+        // Chart.js Telemetry Graph
+        const ctx = document.getElementById('telemetryChart').getContext('2d');
+        const telemetryChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['00:00', '02:00', '04:00', '06:00', '08:00', '10:00', '12:00', '14:00', '16:00', '18:00', '20:00'],
+                datasets: [{
+                    label: 'Audi R8 GT3 Speed (km/h)',
+                    data: [120, 245, 180, 270, 95, 260, 280, 110, 255, 272, 140],
+                    borderColor: '#ef4444',
+                    backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                    borderWidth: 2,
+                    fill: true,
+                    tension: 0.3,
+                    pointRadius: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: { grid: { color: '#1e293b' }, ticks: { color: '#64748b', font: { size: 10 } } },
+                    y: { grid: { color: '#1e293b' }, ticks: { color: '#64748b', font: { size: 10 } } }
+                },
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+
+        // Function to Fetch Telemetry from Spring Boot API
+        async function fetchTelemetryData() {
+            try {
+                const response = await fetch('/api/v1/telemetry/gt3/SESSION_SPA_01');
+                if (!response.ok) throw new Error('No telemetry data found');
+                const data = await response.json();
+                
+                // Update Chart
+                telemetryChart.data.labels = data.map(d => new Date(d.timestamp).toLocaleTimeString());
+                telemetryChart.data.datasets[0].data = data.map(d => d.speedKmh);
+                telemetryChart.update();
+            } catch (err) {
+                console.warn('API Endpoint query fallback to simulation data:', err.message);
+            }
+        }
+
+        // Function to Load GeoJSON Geometry from Backend
+        async function loadGeoJsonTrack() {
+            try {
+                const res = await fetch('/api/v1/circuit/spa-geometry');
+                const geojson = await res.json();
+                L.geoJSON(geojson, {
+                    style: { color: '#ef4444', weight: 4, opacity: 0.8 }
+                }).addTo(map);
+            } catch (err) {
+                console.log('GeoJSON path pending creation in static folder.');
+            }
+        }
+
+        loadGeoJsonTrack();
+    </script>
+</body>
+</html>

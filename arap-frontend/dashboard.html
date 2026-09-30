@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARAP v1.0 - Decision Base | Spa 24h</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen p-6">
+
+    <!-- Header -->
+    <header class="flex justify-between items-center pb-6 mb-6 border-b border-slate-800">
+        <div>
+            <h1 class="text-2xl font-bold tracking-wider text-red-500 flex items-center gap-2">
+                <span>ARAP v1.0</span>
+                <span class="text-xs bg-red-950 text-red-400 border border-red-800 px-2 py-0.5 rounded-full font-mono">AUDI SPORT GT3</span>
+            </h1>
+            <p class="text-xs text-slate-400 mt-1">Análisis y Rendimiento Audi Prototype — Telemetría & WebGIS Base</p>
+        </div>
+        <div class="flex items-center gap-4 text-xs font-mono">
+            <span class="bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-lg flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                MONGO_DB: ONLINE
+            </span>
+            <button onclick="logout()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700 transition-colors">
+                Cerrar Sesión
+            </button>
+        </div>
+    </header>
+
+    <!-- Bento Grid Layout -->
+    <main class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        
+        <!-- WebGIS Spa -->
+        <div class="md:col-span-2 lg:col-span-2 md:row-span-2 bg-slate-900 border border-slate-800 p-4 rounded-xl flex flex-col justify-between shadow-xl">
+            <div class="flex justify-between items-center mb-3">
+                <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-300 flex items-center gap-2">
+                    Circuit Geometry & Sectors (WebGIS)
+                </h2>
+                <span class="text-xs text-slate-500 font-mono">GeoJSON Live Vector</span>
+            </div>
+            <div id="map" class="bg-slate-950 border border-slate-800"></div>
+        </div>
+
+        <!-- Metric KPI -->
+        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl flex flex-col justify-between">
+            <span class="text-xs text-slate-400 font-medium uppercase">Best Lap (Stint 20 min)</span>
+            <div class="my-2">
+                <span class="text-3xl font-mono font-bold text-red-400">2:17.482</span>
+                <span class="text-xs text-slate-500 block mt-1">S3 Optimal Pace</span>
+            </div>
+            <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-red-500 h-full w-[88%]"></div>
+            </div>
+        </div>
+
+        <!-- Fuel Strategy -->
+        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl flex flex-col justify-between">
+            <span class="text-xs text-slate-400 font-medium uppercase">Est. Fuel Burn / Lap</span>
+            <div class="my-2">
+                <span class="text-3xl font-mono font-bold text-amber-400">3.42 L</span>
+                <span class="text-xs text-slate-500 block mt-1">Stint Max Target: 65.0 L</span>
+            </div>
+            <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                <div class="bg-amber-500 h-full w-[62%]"></div>
+            </div>
+        </div>
+
+        <!-- Telemetry Chart -->
+        <div class="md:col-span-2 lg:col-span-2 bg-slate-900 border border-slate-800 p-4 rounded-xl">
+            <div class="flex justify-between items-center mb-3">
+                <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-300">Kinematic Telemetry Stream</h2>
+            </div>
+            <div class="h-48">
+                <canvas id="telemetryChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Grip Weather Card -->
+        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl flex flex-col justify-between">
+            <span class="text-xs text-slate-400 font-medium uppercase">Radar Track Temp</span>
+            <div class="my-2">
+                <span class="text-3xl font-mono font-bold text-blue-300">21.4 °C</span>
+                <span class="text-xs text-slate-500 block mt-1">Ambient: 16.8 °C</span>
+            </div>
+            <span class="text-[11px] text-slate-400 italic">Eau Rouge Grip Index: 0.91 µ</span>
+        </div>
+
+        <!-- Control Actions -->
+        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl flex flex-col justify-between">
+            <span class="text-xs text-slate-400 font-medium uppercase">Stint Control</span>
+            <div class="flex flex-col gap-2 my-2">
+                <button onclick="fetchTelemetryData()" class="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-3 rounded-lg text-xs uppercase tracking-wider transition-colors shadow-lg shadow-red-900/30">
+                    Fetch Stint Telemetry
+                </button>
+                <button onclick="loadSpaGeometry()" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold py-2 px-3 rounded-lg text-xs uppercase tracking-wider border border-slate-700 transition-colors">
+                    Reload Spa Geometry
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="js/auth.js"></script>
+    <script src="js/webgis-map.js"></script>
+    <script src="js/telemetry-chart.js"></script>
+    <script>checkAuth();</script>
+</body>
+</html>
