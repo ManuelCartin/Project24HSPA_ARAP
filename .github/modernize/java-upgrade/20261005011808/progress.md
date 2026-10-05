@@ -22,7 +22,7 @@
     - Result: ✅ Environment verified.
     - Notes: Wrapper invoked from the backend project directory.
   - **Deferred Work**: None
-  - **Commit**:
+  - **Commit**: N/A - environment setup only; no project changes.
 
 - **Step 2: Setup Baseline**
   - **Status**: ✅ Completed
@@ -39,7 +39,7 @@
     - Result: ⚠️ Baseline skipped; pass rate unavailable.
     - Notes: Java 17 is not installed; Java 25 is available for upgrade verification.
   - **Deferred Work**: None
-  - **Commit**:
+  - **Commit**: N/A - baseline skipped; no project changes.
 
 - **Step 3: Upgrade Java Runtime and Compatible Framework**
   - **Status**: ✅ Completed
@@ -76,7 +76,7 @@
     - Result: ✅ Build and verification succeeded; 1 test passed, 0 failures, 0 errors, 0 skipped.
     - Notes: No JaCoCo plugin or coverage report is configured. Mockito emitted a dynamic-agent warning, but tests passed.
   - **Deferred Work**: None
-  - **Commit**: Pending
+  - **Commit**: d10b07e4d6f6d0d42c6551b6e90959d7076626a9 - Step 4: Final Validation - Compile: SUCCESS, Tests: 1/1 passed
 
 ---
 
