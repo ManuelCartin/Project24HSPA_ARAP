@@ -58,28 +58,30 @@
     - Result: ✅ Production and test compilation succeeded; no known CVEs found in supplied direct dependencies.
     - Notes: The test suite runs in Final Validation.
   - **Deferred Work**: None
-  - **Commit**: Pending
+  - **Commit**: eeae0e8c512ebc37bdff37cf839e6d3ace74c537 - Step 3: Upgrade Java Runtime and Compatible Framework - Compile: SUCCESS
 
 - **Step 4: Final Validation**
-  - **Status**: ⏳ In Progress
+  - **Status**: ✅ Completed
   - **Changes Made**:
+    - No additional source or configuration changes required after final validation.
   - **Review Code Changes**:
-    - Sufficiency:
-    - Necessity:
-      - Functional Behavior:
-      - Security Controls:
+    - Sufficiency: ✅ Java 25 target and compatible Spring Boot version confirmed.
+    - Necessity: ✅ No unrelated code changes introduced.
+      - Functional Behavior: ✅ Application context started successfully on Java 25.
+      - Security Controls: ✅ No security controls changed.
   - **Verification**:
-    - Command:
-    - JDK:
-    - Build tool:
-    - Result:
-    - Notes:
+    - Command: `mvnw.cmd clean test-compile -q`; `mvnw.cmd clean test -q`; `mvnw.cmd clean verify -Djacoco.skip=false -q`
+    - JDK: `C:\Program Files\Java\jdk-25`
+    - Build tool: Maven Wrapper 3.9.16
+    - Result: ✅ Build and verification succeeded; 1 test passed, 0 failures, 0 errors, 0 skipped.
+    - Notes: No JaCoCo plugin or coverage report is configured. Mockito emitted a dynamic-agent warning, but tests passed.
   - **Deferred Work**: None
-  - **Commit**:
+  - **Commit**: Pending
 
 ---
 
 ## Notes
 
 - JDK 17 is unavailable, so the optional pre-upgrade baseline is skipped.
-- `CircuitController.java` had an existing working-tree modification; it was preserved during branch preparation.
+- `CircuitController.java` had an existing working-tree modification; branch preparation stashed it separately and did not include it in the upgrade.
+- The application context test passed and connected to MongoDB at localhost:27017.
