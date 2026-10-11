@@ -1,0 +1,26 @@
+[{
+  "_id": {
+    "$oid": "6abab7dd1e1d34b938a7d18c"
+  },
+  "eventId": "SPA_24H_2026",
+  "eventType": "QUALIFYING",
+  "phase": "PRE_RACE",
+  "category": "GT3",
+  "sessionDate": "2026-06-25",
+  "trackCondition": "DRY",
+  "temperatureC": 24,
+  "bestLapTime": "2:18.450",
+  "tyreCompound": "SLICK",
+  "fuelLoadKg": 15,
+  "trackEvolution": "HIGH",
+  "source": "REFERENCE_DATA",
+  "decisionContext": {
+    "objective": "QUALIFYING_SETUP",
+    "relevantVariables": [
+      "fuelLoad",
+      "tyreCompound",
+      "trackTemperature",
+      "lapTime"
+    ]
+  }
+}]

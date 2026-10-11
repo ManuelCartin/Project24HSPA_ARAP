@@ -1,0 +1,76 @@
+[{
+  "_id": {
+    "$oid": "6ababc841e1d34b938ac094a"
+  },
+  "sessionId": "GT3_001",
+  "vehicle": {
+    "manufacturer": "Audi",
+    "model": "R8 LMS GT3 Evo II"
+  },
+  "category": "GT3",
+  "device": "ADL",
+  "sampleRateHz": 200,
+  "startDateTime": {
+    "$date": "2026-09-23T19:36:37.000Z"
+  },
+  "durationSeconds": 1381.51,
+  "channelCount": 66,
+  "beaconMarkers": [
+    210.453,
+    380.223,
+    547.962,
+    713.346,
+    879.486,
+    1046.37,
+    1211.18
+  ]
+},
+{
+  "_id": {
+    "$oid": "6ababcd81e1d34b938ac094b"
+  },
+  "sessionId": "ROAD_001",
+  "vehicle": {
+    "manufacturer": "Audi",
+    "model": "R8 V10 performance quattro"
+  },
+  "category": "ROAD",
+  "device": "ADL",
+  "sampleRateHz": 200,
+  "startDateTime": {
+    "$date": "2026-09-21T20:27:59.000Z"
+  },
+  "sourceDurationSeconds": 1118,
+  "loadedDurationSeconds": 170.14,
+  "channelCount": 62,
+  "beaconMarkers": [
+    193.611,
+    378.069,
+    555.939,
+    733.566,
+    913.407
+  ]
+},
+{
+  "_id": {
+    "$oid": "6abac1b21e1d34b938aee789"
+  },
+  "sessionId": "GT2_001",
+  "vehicle": {
+    "manufacturer": "Audi",
+    "model": "R8 LMS GT2"
+  },
+  "category": "GT2",
+  "device": "ADL",
+  "sampleRateHz": 200,
+  "startDateTime": "2026-09-24T17:48:15",
+  "durationSeconds": 1039.06,
+  "channelCount": 66,
+  "beaconMarkers": [
+    173.349,
+    341.103,
+    507.255,
+    678.645,
+    845.07
+  ]
+}]
