@@ -1,0 +1,188 @@
+[{
+  "_id": {
+    "$oid": "6abc14cb1fda665a960020de"
+  },
+  "data_code": "GT3_AUDI_R8_LMS_001",
+  "vehicle": {
+    "category": "GT3",
+    "manufacturer": "Audi",
+    "model": "R8 LMS"
+  },
+  "tires": {
+    "front_left": {
+      "pressure_psi": 26,
+      "camber_deg": -3.5,
+      "toe_deg": 0,
+      "caster_deg": 8
+    },
+    "front_right": {
+      "pressure_psi": 26,
+      "camber_deg": -3.5,
+      "toe_deg": 0,
+      "caster_deg": 8
+    },
+    "rear_left": {
+      "pressure_psi": 25.5,
+      "camber_deg": -3,
+      "toe_deg": 0
+    },
+    "rear_right": {
+      "pressure_psi": 25.5,
+      "camber_deg": -3,
+      "toe_deg": 0
+    }
+  },
+  "electronics": {
+    "tc1": 5,
+    "tc2": 6,
+    "abs": 6,
+    "telemetry_laps": 10
+  },
+  "fuel_strategy": {
+    "fuel_liters": 30,
+    "tire_compound": "Slick S1"
+  },
+  "suspension": {
+    "front": {
+      "anti_roll_bar": 3,
+      "brake_bias_percent": 61,
+      "steering_ratio": 14,
+      "left": {
+        "spring_rate_nm": 220000,
+        "bumpstop_rate_n": 1000,
+        "bumpstop_range": 15
+      },
+      "right": {
+        "spring_rate_nm": 220000,
+        "bumpstop_rate_n": 1000,
+        "bumpstop_range": 15
+      }
+    },
+    "rear": {
+      "anti_roll_bar": 1,
+      "differential_preload_nm": 80,
+      "left": {
+        "spring_rate_nm": 280000,
+        "bumpstop_rate_n": 1500,
+        "bumpstop_range": 15
+      },
+      "right": {
+        "spring_rate_nm": 280000,
+        "bumpstop_rate_n": 1500,
+        "bumpstop_range": 15
+      }
+    }
+  },
+  "dampers": {
+    "front_left": {
+      "slow_compression": 8,
+      "slow_rebound": 8
+    },
+    "front_right": {
+      "slow_compression": 8,
+      "slow_rebound": 8
+    },
+    "rear_left": {
+      "slow_compression": 8,
+      "slow_rebound": 8
+    },
+    "rear_right": {
+      "slow_compression": 8,
+      "slow_rebound": 8
+    }
+  },
+  "aero": {
+    "front": {
+      "ride_height_mm": 55
+    },
+    "rear": {
+      "ride_height_mm": 75,
+      "rear_wing_angle_deg": 4
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "6ac54b745bf206887c13bac3"
+  },
+  "setupId": "Test_001",
+  "vehicleId": "AUDI_R8_GT3_001",
+  "category": "GT3",
+  "circuitId": "SPA",
+  "sessionId": "GT3_001",
+  "tyres": {
+    "front_left": {
+      "pressure_psi": 26,
+      "alignment_deg": 0,
+      "camber_deg": -3.5,
+      "caster_deg": 8
+    },
+    "front_right": {
+      "pressure_psi": 26,
+      "alignment_deg": 0,
+      "camber_deg": -3.5,
+      "caster_deg": 8
+    },
+    "rear_left": {
+      "pressure_psi": 26.5,
+      "alignment_deg": 0,
+      "camber_deg": -3
+    },
+    "rear_right": {
+      "pressure_psi": 26.5,
+      "alignment_deg": 0,
+      "camber_deg": -3
+    },
+    "compound_front": "Slick (S)",
+    "compound_rear": "Slick (S)"
+  },
+  "electronics": {
+    "tc1": 5,
+    "tc2": 5,
+    "abs": 5,
+    "telemetry_laps": 99
+  },
+  "fuel_strategy": {
+    "fuel_liters": 30,
+    "front_tyre": "Slick (S)",
+    "rear_tyre": "Slick (S)"
+  },
+  "suspension": {
+    "front_left_spring_N_m": 220000,
+    "front_right_spring_N_m": 220000,
+    "rear_left_spring_N_m": 260000,
+    "rear_right_spring_N_m": 260000,
+    "front_bump_stop_rate_N": 1000,
+    "rear_bump_stop_rate_N": 1500,
+    "front_bump_stop_travel": 15,
+    "rear_bump_stop_travel": 15,
+    "front_anti_roll_bar": 3,
+    "rear_anti_roll_bar": 1,
+    "brake_bias_percent": 61,
+    "steering_ratio": 14,
+    "differential_preload_Nm": 60
+  },
+  "dampers": {
+    "front_left": {
+      "slow_compression": 8,
+      "slow_extension": 8
+    },
+    "front_right": {
+      "slow_compression": 8,
+      "slow_extension": 8
+    },
+    "rear_left": {
+      "slow_compression": 8,
+      "slow_extension": 8
+    },
+    "rear_right": {
+      "slow_compression": 8,
+      "slow_extension": 8
+    }
+  },
+  "aero": {
+    "front_height_mm": 57,
+    "rear_height_mm": 75,
+    "rear_wing_angle_deg": 5
+  }
+}]

@@ -1,0 +1,92 @@
+[{
+  "_id": {
+    "$oid": "6abc15d31fda665a960020e1"
+  },
+  "session_id": "SES_GT3_001",
+  "data_code": "GT3_AUDI_R8_001",
+  "session_type": "training",
+  "duration_minutes": 20,
+  "start_time": "13:15",
+  "time_multiplier": 1,
+  "weather": {
+    "preset": "scattered_clouds",
+    "mode": "dynamic",
+    "cloud_cover_pct": 25,
+    "precipitation_pct": 0,
+    "fog_density_pct": 0,
+    "wind_direction_deg": 0,
+    "wind_speed_ms": 0
+  },
+  "track_conditions": {
+    "initial_grip": "green"
+  }
+},
+{
+  "_id": {
+    "$oid": "6abc16101fda665a960020e2"
+  },
+  "session_id": "SES_GT2_001",
+  "data_code": "GT2_AUDI_R8_001",
+  "session_type": "training",
+  "duration_minutes": 20,
+  "start_time": "13:15",
+  "time_multiplier": 1,
+  "weather": {
+    "preset": "scattered_clouds",
+    "mode": "dynamic",
+    "cloud_cover_pct": 25,
+    "precipitation_pct": 0,
+    "fog_density_pct": 0,
+    "wind_direction_deg": 0,
+    "wind_speed_ms": 0
+  },
+  "track_conditions": {
+    "initial_grip": "green"
+  }
+},
+{
+  "_id": {
+    "$oid": "6abc165d1fda665a960020e7"
+  },
+  "session_id": "SES_ROAD_001",
+  "data_code": "ROAD_AUDI_R8_001",
+  "session_type": "training",
+  "duration_minutes": 20,
+  "start_time": "13:15",
+  "time_multiplier": 1,
+  "weather": {
+    "preset": "scattered_clouds",
+    "mode": "dynamic",
+    "cloud_cover_pct": 25,
+    "precipitation_pct": 0,
+    "fog_density_pct": 0,
+    "wind_direction_deg": 0,
+    "wind_speed_ms": 0
+  },
+  "track_conditions": {
+    "initial_grip": "green"
+  }
+},
+{
+  "_id": {
+    "$oid": "6abc169c1fda665a960020e8"
+  },
+  "session_id": "SES_GT4_001",
+  "data_code": "GT4_AUDI_R8_001",
+  "session_type": "training",
+  "duration_minutes": 20,
+  "start_time": "13:15",
+  "time_multiplier": 1,
+  "weather": {
+    "preset": "scattered_clouds",
+    "mode": "dynamic",
+    "cloud_cover_pct": 25,
+    "precipitation_pct": 0,
+    "fog_density_pct": 0,
+    "wind_direction_deg": 0,
+    "wind_speed_ms": 0
+  },
+  "track_conditions": {
+    "initial_grip": "green"
+  }
+}]

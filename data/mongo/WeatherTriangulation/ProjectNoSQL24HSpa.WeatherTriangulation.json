@@ -1,0 +1,368 @@
+[{
+  "_id": {
+    "$oid": "6abc17b35c1a6f4784565995"
+  },
+  "type": "FeatureCollection",
+  "name": "WeatherTriangulation",
+  "source": "Radares Historic Meteo Spa Francorchamps.kml",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "feature_type": "weather_station",
+        "station_id": "ST01",
+        "name": "Spa-Francorchamps"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.9661612,
+          50.4436823
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "feature_type": "weather_station",
+        "station_id": "ST02",
+        "name": "Verviers"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.8673086,
+          50.5912077
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "feature_type": "weather_station",
+        "station_id": "ST03",
+        "name": "Malmedy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.025931,
+          50.4259898
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "feature_type": "weather_station",
+        "station_id": "ST04",
+        "name": "Seraing"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.5141268,
+          50.6098842
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "feature_type": "weather_station",
+        "station_id": "ST05",
+        "name": "Durbuy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.4556519,
+          50.3520176
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "feature_type": "weather_station",
+        "station_id": "ST06",
+        "name": "Houffalize"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.7897796,
+          50.132176
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "feature_type": "weather_station",
+        "station_id": "ST07",
+        "name": "Eupen"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.0382788,
+          50.6328323
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "feature_type": "connection",
+        "relation_id": "REL001",
+        "relation": "Radar To Spa",
+        "source_station": "ST05",
+        "target_station": "ST01"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            5.4549837715,
+            50.352683018
+          ],
+          [
+            5.9656881881,
+            50.4453091205
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "feature_type": "connection",
+        "relation_id": "REL002",
+        "relation": "Malmedy to SPA",
+        "source_station": "ST03",
+        "target_station": "ST01"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            6.0264108467,
+            50.4256836799
+          ],
+          [
+            5.9660024053,
+            50.4439033346
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "feature_type": "connection",
+        "relation_id": "REL003",
+        "relation": "Verviers to SPA",
+        "source_station": "ST02",
+        "target_station": "ST01"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            5.866574698,
+            50.5928289095
+          ],
+          [
+            5.9646284357,
+            50.445956568
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "feature_type": "connection",
+        "relation_id": "REL004",
+        "relation": "Seraing To SPA",
+        "source_station": "ST04",
+        "target_station": "ST01"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            5.5146705006,
+            50.6115998987
+          ],
+          [
+            5.9662188537,
+            50.4449057538
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "feature_type": "connection",
+        "relation_id": "REL005",
+        "relation": "Seraing plus Durbuy",
+        "source_station": "ST04",
+        "target_station": "ST05"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            5.5121930574,
+            50.6116530596
+          ],
+          [
+            5.4574919798,
+            50.3526154377
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "feature_type": "connection",
+        "relation_id": "REL006",
+        "relation": "Houffalize To SPA",
+        "source_station": "ST06",
+        "target_station": "ST01"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            5.794590681,
+            50.1352321331
+          ],
+          [
+            5.9639146189,
+            50.4475767201
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "feature_type": "connection",
+        "relation_id": "REL007",
+        "relation": "Durbuy plus Houffalize",
+        "source_station": "ST05",
+        "target_station": "ST06"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            5.455683359,
+            50.3559234434
+          ],
+          [
+            5.7863734492,
+            50.1325958486
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "feature_type": "connection",
+        "relation_id": "REL008",
+        "relation": "Houffalize plus Malmedy",
+        "source_station": "ST06",
+        "target_station": "ST03"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            6.0204065148,
+            50.4282190539
+          ],
+          [
+            5.7891122694,
+            50.1343533054
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "feature_type": "connection",
+        "relation_id": "REL009",
+        "relation": "Verviers plus Seraing",
+        "source_station": "ST04",
+        "target_station": "ST02"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            5.5144357925,
+            50.6164694094
+          ],
+          [
+            5.8637363478,
+            50.5945290407
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "feature_type": "connection",
+        "relation_id": "REL010",
+        "relation": "Malmedy plus Eupen",
+        "source_station": "ST03",
+        "target_station": "ST07"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            6.0262592337,
+            50.4282729348
+          ],
+          [
+            6.0373025992,
+            50.6376530271
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "feature_type": "connection",
+        "relation_id": "REL011",
+        "relation": "Eupen plus Verviers",
+        "source_station": "ST02",
+        "target_station": "ST07"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            5.867954821,
+            50.5951298469
+          ],
+          [
+            6.03625075197,
+            50.6376538502
+          ]
+        ]
+      }
+    }
+  ]
+}]

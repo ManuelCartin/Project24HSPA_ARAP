@@ -1,0 +1,2 @@
+data/mongo/Telemetry_Audi_GT3/*.jsonl filter=lfs diff=lfs merge=lfs -text
+data/mongo/Telemetry_Audi_GT3_raw/*.jsonl filter=lfs diff=lfs merge=lfs -text

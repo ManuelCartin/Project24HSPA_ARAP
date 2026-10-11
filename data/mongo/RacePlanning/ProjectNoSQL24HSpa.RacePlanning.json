@@ -1,0 +1,21 @@
+[{
+  "_id": {
+    "$oid": "6abc5bca277bafb2245a7567"
+  },
+  "planning_id": "SPA24H_2026_PLAN",
+  "event_id": "SPA_24H_2026",
+  "planning_horizon": "6_MONTHS",
+  "entries": [
+    {
+      "car_number": 84,
+      "team_id": "EASTALENT_RACING",
+      "vehicle_id": "AUDI_R8_LMS_GT3_001",
+      "driver_ids": [
+        "DRIVER_001",
+        "DRIVER_002",
+        "DRIVER_003"
+      ],
+      "status": "CONFIRMED"
+    }
+  ]
+}]

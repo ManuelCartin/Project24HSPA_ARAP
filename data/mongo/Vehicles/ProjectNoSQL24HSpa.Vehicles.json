@@ -1,0 +1,126 @@
+[{
+  "_id": {
+    "$oid": "6abc58af277bafb2245a7555"
+  },
+  "vehicleId": "AUDI_R8_LMS_GT3_001",
+  "manufacturer": "Audi",
+  "model": "R8 LMS GT3",
+  "category": "GT3",
+  "specifications": {
+    "engine": "Naturally aspirated V10",
+    "power_kw": 405,
+    "power_hp": 550,
+    "displacement_cc": 5204,
+    "transmission": "6-speed sequential gearbox",
+    "traction_control": "Bosch Motorsport M5 TC",
+    "abs": "Bosch Motorsport ABS M5",
+    "weight_kg": 1320,
+    "front_wheel": "12J x 18 in",
+    "rear_wheel": "13J x 18 in"
+  }
+},
+{
+  "_id": {
+    "$oid": "6abc58fb277bafb2245a7556"
+  },
+  "vehicle_id": "AUDI_R8_LMS_GT2_001",
+  "manufacturer": "Audi",
+  "model": "R8 LMS GT2",
+  "category": "GT2",
+  "specifications": {
+    "engine": "5.2L V10 Naturally Aspirated",
+    "power_hp": 640,
+    "power_kw": 470,
+    "torque_nm": 550,
+    "displacement": "5.2 L",
+    "transmission": "6-speed sequential racing gearbox",
+    "traction_control": true,
+    "abs": true,
+    "weight_kg": 1320,
+    "front_wheel": "18 x 11.5 inches",
+    "rear_wheel": "18 x 13 inches"
+  }
+},
+{
+  "_id": {
+    "$oid": "6abc595b277bafb2245a7557"
+  },
+  "vehicle_id": "AUDI_R8_LMS_GT4_001",
+  "manufacturer": "Audi",
+  "model": "R8 LMS GT4",
+  "category": "GT4",
+  "specifications": {
+    "engine": "Naturally aspirated V10",
+    "power_kw": 340,
+    "power_hp": 460,
+    "torque_nm": 550,
+    "displacement_cc": 5204,
+    "transmission": "6-speed sequential gearbox",
+    "traction_control": true,
+    "abs": true,
+    "weight_kg": 1450,
+    "front_wheel": "11J x 18 in",
+    "rear_wheel": "11.5J x 18 in"
+  }
+},
+{
+  "_id": {
+    "$oid": "6abc59c2277bafb2245a7558"
+  },
+  "vehicle_id": "AUDI_R8_V10_ROAD_001",
+  "manufacturer": "Audi",
+  "model": "R8 V10 Performance Quattro",
+  "category": "ROAD",
+  "specifications": {
+    "engine": {
+      "fuel": "Gasolina",
+      "configuration": "V10",
+      "cylinders": 10,
+      "displacement_cc": 5204,
+      "power_cv": 620,
+      "power_kw": 456,
+      "torque_nm": 580,
+      "max_power_rpm": 8000,
+      "max_torque_rpm": 6600,
+      "bore_mm": 84.5,
+      "stroke_mm": 92.8,
+      "compression_ratio": 12.7
+    },
+    "transmission": {
+      "traction": "Total",
+      "gearbox": "Automático",
+      "gears": 7,
+      "clutch": "Dos embragues multidisco bañados en aceite"
+    },
+    "chassis": {
+      "front_suspension": "Paralelogramo deformable",
+      "rear_suspension": "Paralelogramo deformable",
+      "front_spring": "Resorte helicoidal",
+      "rear_spring": "Resorte helicoidal"
+    },
+    "brakes": {
+      "front_type": "Disco ventilado cerámico",
+      "front_diameter_mm": 380,
+      "rear_type": "Disco ventilado cerámico",
+      "rear_diameter_mm": 356
+    },
+    "wheels": {
+      "front_tire": "245/35 R19 93Y",
+      "rear_tire": "295/35 R19 102Y",
+      "front_rim": "8.5 x 19",
+      "rear_rim": "11 x 19"
+    },
+    "dimensions": {
+      "length_mm": 4429,
+      "width_mm": 1940,
+      "height_mm": 1236,
+      "wheelbase_mm": 2650,
+      "weight_kg": 1670,
+      "fuel_tank_l": 73
+    },
+    "performance": {
+      "top_speed_kmh": 331,
+      "acceleration_0_100_kmh_s": 3.1
+    }
+  }
+}]
